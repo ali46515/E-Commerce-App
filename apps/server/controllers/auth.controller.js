@@ -1,10 +1,10 @@
-import Buyer from "../models/Buyer.js";
+import Buyer from "../models/buyer.model.js";
 import {
   generateAccessToken,
   generateRefreshToken,
   verifyRefreshToken,
 } from "../utils/jwtUtils.js";
-import { sendAccountCreationEmail } from "../services/emailService.js";
+import { sendAccountCreationEmail } from "../services/email.service.js";
 import AppError from "../utils/AppError.js";
 import crypto from "crypto";
 
