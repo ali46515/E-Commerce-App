@@ -1,7 +1,7 @@
 import morgan from "morgan";
 import express from "express";
 import cookieParser from "cookie-parser";
-import authRoutes from "./routes/authRoutes.js";
+import authRoutes from "./routes/auth.routes.js";
 import { corsOptions } from "./config/corsOptions.js";
 import { apiLimiter } from "./middleware/rateLimit.middleware.js";
 
