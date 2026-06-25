@@ -1,3 +1,5 @@
+import AppError from "../utils/AppError";
+
 const whitelist = ['http//:localhos:3000']
 
 export const corsOptions = {
@@ -5,7 +7,7 @@ export const corsOptions = {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new AppError("Not allowed by CORS", 403));
     }
   },
   credentials: true,
