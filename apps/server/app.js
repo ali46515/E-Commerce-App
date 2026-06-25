@@ -3,12 +3,14 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes.js";
 import AppError from "./utils/AppError.js";
+import { corsOptions } from "./config/corsOptions.js";
 
 const app = express();
 
 // Built-in middlewares
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+app.use(cors(corsOptions))
 
 app.use(cookieParser());
 
