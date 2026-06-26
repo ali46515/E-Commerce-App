@@ -356,35 +356,27 @@ buyerSchema.virtual("isAccountCreationTokenValid").get(function () {
   );
 });
 
-buyerSchema.index({ email: 1 });
 buyerSchema.index({ accountCreationToken: 1 });
 buyerSchema.index(
   { accountCreationTokenExpires: 1 },
   { expireAfterSeconds: 0 },
 );
 buyerSchema.index({ "location.country": 1, "location.city": 1 });
-buyerSchema.index({ referralCode: 1 });
 buyerSchema.index({ createdAt: -1 });
 buyerSchema.index({ accountStatus: 1 });
 
-buyerSchema.pre("save", async function (next) {
-  if (!this.isModified("password") || !this.password) return next();
+buyerSchema.pre("save", async function () {
+  if (!this.isModified("password") || !this.password) return;
 
-  try {
-    const salt = await bcrypt.genSalt(12);
-    this.password = await bcrypt.hash(this.password, salt);
+  const salt = await bcrypt.genSalt(12);
+  this.password = await bcrypt.hash(this.password, salt);
 
-    if (!this.isNew) {
-      this.passwordChangedAt = Date.now() - 1000;
-    }
-
-    next();
-  } catch (error) {
-    next(error);
+  if (!this.isNew) {
+    this.passwordChangedAt = Date.now() - 1000;
   }
 });
 
-buyerSchema.pre("save", function (next) {
+buyerSchema.pre("save", function () {
   if (
     this.firstName &&
     this.lastName &&
@@ -413,9 +405,7 @@ buyerSchema.pre("save", function (next) {
         }
       }
     }
-  }
-
-  next();
+  }  
 });
 
 buyerSchema.methods.generateAccountCreationToken = function () {

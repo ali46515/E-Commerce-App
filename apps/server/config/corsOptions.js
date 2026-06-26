@@ -1,6 +1,6 @@
 import AppError from "../utils/AppError.js";
 
-const whitelist = ['http//:localhos:3000']
+const whitelist = ['http://localhost:5173']
 
 export const corsOptions = {
   origin: (origin, callback) => {

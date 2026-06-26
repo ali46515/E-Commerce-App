@@ -1,0 +1,23 @@
+/* components/AccountSetup.css */
+.account-setup {
+  margin-top: 16px;
+}
+
+.email-confirmation {
+  background: #f0f7ff;
+  padding: 12px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 20px;
+  border: 1px solid #cce4ff;
+}
+
+.email-confirmation strong {
+  color: #0066c0;
+}
+
+.form-group select.form-input {
+  cursor: pointer;
+  background: white;
+}
