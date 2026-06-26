@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer";
+import { config } from "dotenv";
+config();
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -47,10 +49,10 @@ const sendAccountCreationEmail = async (email, token, fullName) => {
       <body>
         <div class="container">
           <div class="header">
-            <h1>Welcome to ${process.env.APP_NAME || 'Our Store'}!</h1>
+            <h1>Welcome to ${process.env.APP_NAME || "Our Store"}!</h1>
           </div>
           <div class="content">
-            <p>Hello${fullName ? ` ${fullName}` : ''},</p>
+            <p>Hello${fullName ? ` ${fullName}` : ""},</p>
             <p>Thank you for registering! To complete your account setup, please click the button below:</p>
             <center>
               <a href="${accountSetupUrl}" class="button">Complete Account Setup</a>
@@ -63,7 +65,7 @@ const sendAccountCreationEmail = async (email, token, fullName) => {
             <p>If you didn't create this account, please ignore this email.</p>
           </div>
           <div class="footer">
-            <p>© ${new Date().getFullYear()} ${process.env.APP_NAME || 'Our Store'}. All rights reserved.</p>
+            <p>© ${new Date().getFullYear()} ${process.env.APP_NAME || "Our Store"}. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -114,7 +116,7 @@ const sendPasswordResetEmail = async (email, resetUrl) => {
             <p>If you didn't request this, please ignore this email.</p>
           </div>
           <div class="footer">
-            <p>© ${new Date().getFullYear()} ${process.env.APP_NAME || 'Our Store'}. All rights reserved.</p>
+            <p>© ${new Date().getFullYear()} ${process.env.APP_NAME || "Our Store"}. All rights reserved.</p>
           </div>
         </div>
       </body>
